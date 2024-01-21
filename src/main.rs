@@ -7,15 +7,15 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("PROBLEM PARSING THE ARGUMENTS: {}", err);
+        eprintln!("PROBLEM PARSING THE ARGUMENTS: {}", err);
         process::exit(1)
     });
     // println!("{:?}", args);
     println!("SEARCHING FOR: {}", config.query);
-    println!("IN FILE: {}", config.filename);
+    println!("FILE TO SEARCH IN: {}", config.filename);
 
     if let Err(e) = run(config) {
-        println!("APLLICATION ERROR: {}", e);
+        eprintln!("APLLICATION ERROR: {}", e);
         process::exit(1);
     }
 }
